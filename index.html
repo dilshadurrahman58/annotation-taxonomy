@@ -76,6 +76,7 @@
       --surface-card-line: rgba(255,255,255,.28);
       --surface-card-blue-wash: rgba(91,124,178,.035);
       --surface-card-warm-wash: rgba(184,79,24,.02);
+      --page-top-halo: rgba(255,255,255,.5);
       --max-w: 1200px;
       --nav-h: 64px;
       --serif: 'Lora', Georgia, serif;
@@ -144,6 +145,7 @@
       --surface-card-line: rgba(255,255,255,.03);
       --surface-card-blue-wash: rgba(124,163,204,.045);
       --surface-card-warm-wash: rgba(212,117,58,.025);
+      --page-top-halo: rgba(124,163,204,.12);
       --enc: #8BAAE2;
       --enc-soft: rgba(139, 170, 226, .12);
       --con: #52B78A;
@@ -178,10 +180,10 @@
 
     body {
       background:
-        radial-gradient(circle at 10% 12%, rgba(255, 255, 255, .8), transparent 22%),
-        radial-gradient(circle at 88% 8%, rgba(91, 124, 178, .1), transparent 26%),
-        radial-gradient(circle at 80% 44%, rgba(184, 79, 24, .04), transparent 18%),
-        linear-gradient(180deg, #FEFDFC 0%, #F7F4EE 44%, #FAFAF8 100%);
+        radial-gradient(ellipse at 50% -8%, var(--page-top-halo), transparent 34%),
+        radial-gradient(circle at 14% 12%, rgba(255, 255, 255, .56), transparent 21%),
+        radial-gradient(circle at 88% 10%, rgba(91, 124, 178, .06), transparent 23%),
+        linear-gradient(180deg, #FEFDFC 0%, #F8F5EF 46%, #FAFAF8 100%);
       color: var(--text);
       font-family: var(--sans);
       font-size: 15.5px;
@@ -194,8 +196,9 @@
 
     [data-theme="dark"] body {
       background:
-        radial-gradient(circle at 10% 12%, rgba(30, 42, 72, .5), transparent 26%),
-        radial-gradient(circle at 88% 8%, rgba(58, 93, 140, .14), transparent 30%),
+        radial-gradient(ellipse at 50% -10%, var(--page-top-halo), transparent 32%),
+        radial-gradient(circle at 14% 12%, rgba(44, 60, 90, .28), transparent 24%),
+        radial-gradient(circle at 88% 10%, rgba(58, 93, 140, .08), transparent 26%),
         linear-gradient(180deg, #0E1117 0%, #101520 50%, #0E1117 100%);
     }
 
@@ -1997,38 +2000,19 @@
     }
     .anno-card-img-wrap {
       position: relative;
-      padding: .72rem .72rem 0;
-      background: linear-gradient(180deg, rgba(247,245,241,.94) 0%, rgba(243,241,237,.88) 100%);
+      padding: 0;
+      background: transparent;
+      border-bottom: 1px solid var(--border-light);
       overflow: hidden;
     }
-    [data-theme="dark"] .anno-card-img-wrap { background: linear-gradient(180deg, rgba(27,35,50,.94) 0%, rgba(23,30,43,.88) 100%); }
     .anno-card-img-wrap img {
       width: 100%; display: block;
-      border-radius: 16px 16px 0 0;
-      border: 1px solid rgba(188, 197, 213, .42);
-      border-bottom: none;
-      box-shadow: 0 14px 28px rgba(29,40,62,.09);
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
       transition: transform .35s var(--ease-fluid), filter .35s var(--ease-fluid);
     }
-    [data-theme="dark"] .anno-card-img-wrap img { border-color: rgba(84, 102, 132, .48); box-shadow: 0 14px 28px rgba(0,0,0,.28); }
     .anno-card:focus-within .anno-card-img-wrap img { transform: scale(1.012); }
-    .anno-card-badge {
-      position: absolute; top: 1rem; left: 1rem;
-      font-size: .58rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase;
-      background: rgba(255,255,255,.9);
-      color: var(--accent-deep);
-      border: 1px solid rgba(58,93,140,.18);
-      border-radius: 999px;
-      padding: .24rem .6rem;
-      box-shadow: 0 8px 20px rgba(29,40,62,.1);
-      backdrop-filter: blur(10px);
-    }
-    [data-theme="dark"] .anno-card-badge {
-      background: rgba(20,28,44,.88);
-      color: var(--accent);
-      border-color: rgba(80,120,180,.22);
-    }
     .anno-card-body { padding: 1rem 1.08rem 1.12rem; display: flex; flex-direction: column; gap: .58rem; }
     .anno-card-types {
       display: flex; flex-wrap: wrap; gap: .3rem;
@@ -2227,11 +2211,9 @@
 
           <div class="anno-gallery">
 
-            <!-- Example (a) -->
             <div class="anno-card">
               <div class="anno-card-img-wrap">
                 <img src="assets/example1.png" alt="Student annotation example (a): freehand rectangles, arrows, and text annotations on the GDPH COVID-19 grouped bar chart" loading="lazy" />
-                <span class="anno-card-badge">Example (a)</span>
               </div>
               <div class="anno-card-body">
                 <div class="anno-card-types">
@@ -2244,11 +2226,9 @@
               </div>
             </div>
 
-            <!-- Example (b) -->
             <div class="anno-card">
               <div class="anno-card-img-wrap">
                 <img src="assets/ensemble4.png" alt="Student annotation example (b): ellipses, rectangles, reference lines, and text annotations" loading="lazy" />
-                <span class="anno-card-badge">Example (b)</span>
               </div>
               <div class="anno-card-body">
                 <div class="anno-card-types">
@@ -2261,11 +2241,9 @@
               </div>
             </div>
 
-            <!-- Example (c) -->
             <div class="anno-card">
               <div class="anno-card-img-wrap">
                 <img src="assets/example6.png" alt="Student annotation example (c): colored rectangular enclosures, data value labels, and a text legend" loading="lazy" />
-                <span class="anno-card-badge">Example (c)</span>
               </div>
               <div class="anno-card-body">
                 <div class="anno-card-types">
